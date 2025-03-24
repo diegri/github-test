@@ -8,8 +8,8 @@ inputs:
       required: false
       default: "Python"
 
-outputs:
-  result: "testResult"
+# outputs:
+#   result: "testResult"
 
 runs:
   using: docker
