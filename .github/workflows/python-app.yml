@@ -24,7 +24,9 @@ jobs:
         echo "### RunID: ${{ github.run_id }} Run Number: ${{github.run_number}} Run Attempt: ${{ github.run_attempt }}" >> $GITHUB_STEP_SUMMARY
     - uses: actions/checkout@v4
     - name: Check code action
-      uses: ./.github/actions/check-code
+      uses: ./.github/actions/check-code-composite
+    # - name: Check code action
+    #   uses: ./.github/actions/check-code-docker
     - name: Set up Python 3.10
       uses: actions/setup-python@v3
       with:

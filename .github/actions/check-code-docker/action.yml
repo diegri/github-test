@@ -14,8 +14,8 @@ inputs:
 runs:
   using: docker
   image: Dockerfile
-  env:
-    SOURCE_TYPE: ${{ inputs.source-type }}
+  args:
+    - ${{ inputs.source-type }}
 
 branding:
     icon: "book"
