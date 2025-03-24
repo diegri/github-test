@@ -1,0 +1,22 @@
+name: "Check Code"
+description: "Check the code - test action"
+author: "diegri"
+
+inputs:
+    source-type:
+      description: "Which language is"
+      required: false
+      default: "Python"
+
+outputs:
+  result: "testResult"
+
+runs:
+  using: docker
+  image: Dockerfile
+  env:
+    SOURCE_TYPE: ${{ inputs.source-type }}
+
+branding:
+    icon: "book"
+    color: "green"
