@@ -5,7 +5,7 @@ name: Python application
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "dev" ]
   pull_request:
     branches: [ "main" ]
 
@@ -58,13 +58,14 @@ jobs:
     - name: Build image
       run: |
         docker image build -t testweb:0.12 .
-    # - name: Remove old container
-    #   run: |
-    #     docker stop devweb
-    #     docker rm devweb
-    # - name: Run docker image
-    #   run: |
-    #     docker run -p 8080:5000 -d --name devweb testweb:0.12
+    - name: Remove old container
+      run: |
+        name="devweb"
+        docker ps -q --filter "name=$name" | xargs -r docker stop
+        docker ps -aq --filter "name=$name" | xargs -r docker rm
+    - name: Run docker image
+      run: |
+        docker run -p 8080:5000 -d --name devweb testweb:0.12
     - name: End pipeline
       run: |
         echo "Local link http://localhost:8080/ "
